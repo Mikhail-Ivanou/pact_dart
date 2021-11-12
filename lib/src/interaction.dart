@@ -62,7 +62,7 @@ class Interaction {
     });
   }
 
-  void _withBody(InteractionPart part, String contentType, Map body) {
+  void _withBody(InteractionPart part, String contentType, Object body) {
     final cContentType = contentType.toNativeUtf8();
     final cBody = jsonEncode(body).toNativeUtf8();
 
@@ -103,7 +103,7 @@ class Interaction {
   }
 
   Interaction willRespondWith(int status,
-      {Map<String, String>? headers, Map? body}) {
+      {Map<String, String>? headers, Object? body}) {
     bindings.pactffi_response_status(interaction, status);
 
     if (headers != null) {
